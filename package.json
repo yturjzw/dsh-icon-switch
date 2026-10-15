@@ -1,0 +1,50 @@
+{
+  "name": "dsh-icon-switch",
+  "version": "1.0.0",
+  "description": "In-app icon switcher for DeepSeek Harness: settings-driven (Config schema renders the plugin section in the app's Settings UI) plus loopback HTTP routes (status/apply/restore) that drive the bundled dsh-icon-switch.ps1 engine.",
+  "type": "module",
+  "main": "lib/index.js",
+  "files": [
+    "lib/",
+    "client/",
+    "tool/",
+    "cordis.patch.yml"
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yturjzw/dsh-icon-switch.git"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "icon",
+    "deepseek-harness"
+  ],
+  "peerDependencies": {
+    "@deepseek-ai/schemastery": "^3.18.1"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/schemastery": {
+      "optional": true
+    }
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-theme"
+      ],
+      "platform": "web"
+    }
+  },
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./client/client.js",
+    "./package.json": "./package.json"
+  }
+}
